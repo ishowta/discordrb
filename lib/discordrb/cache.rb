@@ -154,15 +154,11 @@ module Discordrb
       end
     end
 
-    # Ensures a given server object is cached and if not, cache it from the given data hash.
+    # Ensures a given server object containes all server information.
     # @param data [Hash] A data hash representing a server.
     # @return [Server] the server represented by the data hash.
     def ensure_server(data)
-      if @servers.include?(data['id'].to_i)
-        @servers[data['id'].to_i]
-      else
-        @servers[data['id'].to_i] = Server.new(data, self)
-      end
+      @servers[data['id'].to_i] = Server.new(data, self)
     end
 
     # Ensures a given channel object is cached and if not, cache it from the given data hash.
