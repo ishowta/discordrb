@@ -771,6 +771,7 @@ module Discordrb
     # Internal handler for VOICE_STATE_UPDATE
     def update_voice_state(data)
       @session_id = data['session_id']
+      debug("In session id: #{@session_id}")
 
       server_id = data['guild_id'].to_i
       server = server(server_id)
@@ -816,6 +817,7 @@ module Discordrb
       end
 
       debug('Got data, now creating the bot.')
+      debug("Out session id: #{@session_id}")
       @voices[server_id] = Discordrb::Voice::VoiceBot.new(channel, self, token, @session_id, endpoint)
     end
 
